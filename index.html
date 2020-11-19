@@ -37,6 +37,19 @@
 		.ta{
 			text-align: center;
 		}
+		textarea{
+			opacity: 0;
+			height: 0;
+			width: 0;		
+		}
+		.setIt{
+			display: block;
+			margin: 300px auto 0;
+			text-align: center;
+			padding: 10px;
+			background-color: skyblue;
+			font-weight: 700;
+		}
 	</style>
 </head>
 <body>
@@ -46,6 +59,9 @@
 		<input type="text">
 	</div>
 	
+	<!-- 设置剪贴板 -->
+	<textarea id="clipboard"></textarea>
+	<input type="button" value="Set 剪贴板" onclick="writeToClipboard('复制这段内容,推广这条链接!')" class="setIt">
 </body>
 
 	<script type="text/javascript">
@@ -56,5 +72,18 @@
       		} 
     	})
 		
+
+	//点击修改		   
+    function writeToClipboard(txt){
+    	var clipboard=document.getElementById("clipboard");
+    	clipboard.value=txt;
+    	clipboard.select();                 //选择对象  
+    	document.execCommand("Copy");       //执行浏览器复制命令	
+    	console.log("已复制!")
+	}
+	//自动修改 不一定成功
+	// setTimeout(function(){
+	// 	writeToClipboard("这是个广告!!!!!!!!");
+	// }, 1000)
 	</script>
 </html>
